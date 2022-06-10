@@ -1,0 +1,49 @@
+<div class="sample-wrapper">
+  <button igxButton="outlined" (click)="export()">Export</button>
+  <igx-grid
+    igxPreventDocumentScroll
+    #grid
+    [data]="data"
+    [autoGenerate]="false"
+    primaryKey="ProductID"
+    height="350px"
+    width="700px"
+  >
+    <igx-column field="ProductID" header="Product ID" [dataType]="'number'">
+    </igx-column>
+    <!-- Templated Column -->
+    <igx-column
+      field="ProductName"
+      header="Product Name"
+      [dataType]="'string'"
+      [cellTemplate]="cellTemplate"
+    >
+    </igx-column>
+    <igx-column field="SupplierID" header="Supplier ID" [dataType]="'number'">
+    </igx-column>
+    <igx-column field="CategoryID" header="Category ID" [dataType]="'number'">
+    </igx-column>
+    <igx-column field="UnitPrice" header="Unit Price" [dataType]="'currency'">
+    </igx-column>
+    <igx-column
+      field="UnitsInStock"
+      header="Units In Stock"
+      [dataType]="'number'"
+    >
+    </igx-column>
+    <igx-column field="OrderDate" header="Order Date" [dataType]="'date'">
+    </igx-column>
+    <!-- Templated Column -->
+    <igx-column
+      field="QuantityPerUnit"
+      header="Quantity Per Unit"
+      [dataType]="'string'"
+      [cellTemplate]="cellTemplate"
+    >
+    </igx-column>
+  </igx-grid>
+
+  <ng-template #cellTemplate igxCell let-cell="cell">
+    {{ cell.value | uppercase }}
+  </ng-template>
+</div>
